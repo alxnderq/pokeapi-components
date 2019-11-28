@@ -1,0 +1,30 @@
+$color-primary: #ef3829;
+$color-accent: #ff9d00;
+$color-success: blue;
+$color-danger: red;
+$color-info: green;
+$color-warning: orange;
+$color-light: #fff;
+$color-dark: #000;
+
+$colors-palette: (
+  primary: $color-primary,
+  accent: $color-accent,
+  success: $color-success,
+  danger: $color-danger,
+  info: $color-info,
+  warning: $color-warning,
+  light: $color-light,
+  dark: $color-dark
+);
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-accent: #{$color-accent};
+  --color-success: #{$color-success};
+  --color-danger: #{$color-danger};
+  --color-info: #{$color-info};
+  --color-warning: #{$color-warning};
+  --color-light: #{$color-light};
+  --color-dark: #{$color-dark};
+}

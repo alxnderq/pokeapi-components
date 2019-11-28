@@ -10,53 +10,37 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
+  interface PokemonDetail {}
+  interface PokemonList {}
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLPokemonDetailElement extends Components.PokemonDetail, HTMLStencilElement {}
+  var HTMLPokemonDetailElement: {
+    prototype: HTMLPokemonDetailElement;
+    new (): HTMLPokemonDetailElement;
+  };
+
+  interface HTMLPokemonListElement extends Components.PokemonList, HTMLStencilElement {}
+  var HTMLPokemonListElement: {
+    prototype: HTMLPokemonListElement;
+    new (): HTMLPokemonListElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'pokemon-detail': HTMLPokemonDetailElement;
+    'pokemon-list': HTMLPokemonListElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
+  interface PokemonDetail {}
+  interface PokemonList {}
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'pokemon-detail': PokemonDetail;
+    'pokemon-list': PokemonList;
   }
 }
 
@@ -66,7 +50,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'pokemon-detail': LocalJSX.PokemonDetail & JSXBase.HTMLAttributes<HTMLPokemonDetailElement>;
+      'pokemon-list': LocalJSX.PokemonList & JSXBase.HTMLAttributes<HTMLPokemonListElement>;
     }
   }
 }
