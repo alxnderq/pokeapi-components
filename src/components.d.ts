@@ -7,10 +7,14 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  PokemonListItem,
+} from './utils/models/pokemon-list';
 
 export namespace Components {
-  interface PokemonDetail {}
+  interface PokemonDetail {
+    'data': PokemonListItem;
+  }
   interface PokemonList {}
 }
 
@@ -35,7 +39,9 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface PokemonDetail {}
+  interface PokemonDetail {
+    'data'?: PokemonListItem;
+  }
   interface PokemonList {}
 
   interface IntrinsicElements {

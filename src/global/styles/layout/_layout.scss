@@ -1,0 +1,21 @@
+@import "../mixins/responsive";
+
+.container {
+  --container-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: var(--container-width);
+
+  @include min-width(mobile) {
+    --container-width: 540px;
+  }
+  @include min-width(tablet) {
+    --container-width: 720px;
+  }
+  @include min-width(desktop) {
+    --container-width: 960px;
+  }
+  @include min-width(xl) {
+    --container-width: 1140px;
+  }
+}

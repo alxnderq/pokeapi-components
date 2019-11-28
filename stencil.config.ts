@@ -3,6 +3,7 @@ import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'pokeapi-components',
+  globalStyle: "src/global/styles/app.scss",
   outputTargets: [
     {
       type: 'dist',
@@ -16,12 +17,7 @@ export const config: Config = {
       serviceWorker: null // disable service workers
     }
   ],
-  hashFileNames: true,
   plugins: [
-    sass({
-      injectGlobalPaths: [
-        'src/styles/styles.scss'
-      ]
-    })
+    sass()
   ]
 };

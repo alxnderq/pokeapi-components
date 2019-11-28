@@ -1,3 +1,37 @@
+@import "../../global/styles/mixins/responsive";
+
 :host {
   display: block;
+}
+
+.pokemon-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pokemon-card {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 1px 8px 0 rgba(0, 0, 0, 0.12);
+  flex-basis: 200px;
+  flex-grow: 1;
+  margin: 10px;
+
+  & > &-header,
+  & > &-footer {
+    background-color: inherit;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  & > &-header,
+  & > &-body,
+  & > &-footer {
+    padding: 10px;
+  }
+
+  & > &-body {
+    display: flex;
+    width: inherit;
+  }
 }

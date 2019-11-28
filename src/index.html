@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-  <script type="module" src="/build/pokeapi-components.esm.js"></script>
-  <script nomodule src="/build/pokeapi-components.js"></script>
-
-</head>
-<body>
-
-  <pokemon-list></pokemon-list>
-
-</body>
+    <link rel="stylesheet" href="/build/pokeapi-components.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/build/pokeapi-components.esm.js"></script>
+    <script nomodule src="/build/pokeapi-components.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <pokemon-list></pokemon-list>
+    </div>
+  </body>
 </html>
