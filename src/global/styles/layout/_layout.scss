@@ -19,3 +19,16 @@
     --container-width: 1140px;
   }
 }
+
+.flex {
+  display: flex;
+  height: calc(100vh - 100px);
+}
+
+.flex-items-start {
+  align-items: flex-start;
+}
+
+.flex-column {
+  flex-direction: column;
+}

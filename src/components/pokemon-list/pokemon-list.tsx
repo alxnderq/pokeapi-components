@@ -1,4 +1,13 @@
-import { Component, Host, h, State } from "@stencil/core";
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Host,
+  h,
+  Prop,
+  Watch,
+  State
+} from "@stencil/core";
 import {
   PokemonListResult,
   PokemonListItem
@@ -10,38 +19,42 @@ import {
   shadow: true
 })
 export class PokemonList {
-  readonly API: string;
-  readonly POKEMON_LIST: string = "pokemon";
+  @Prop() data: string;
 
-  @State() result: PokemonListResult;
-  @State() pokemons: PokemonListItem[];
+  @State() pokemon: PokemonListResult;
 
-  constructor() {
-    this.API = "https://pokeapi.co/api/v2";
-    this.POKEMON_LIST = "/pokemon/";
-  }
+  @Event() itemEmitter: EventEmitter<PokemonListItem>;
 
   componentWillLoad() {
-    this.getPokemonList();
+    this.parseObject(this.data);
   }
 
-  async getPokemonList() {
-    const url = `${this.API}${this.POKEMON_LIST}`;
-    const response: Response = await fetch(url);
-    const data: PokemonListResult = await response.json();
-    this.result = data;
-    this.pokemons = data.results;
+  @Watch("data")
+  parseObject(newValue: string) {
+    if (newValue) {
+      this.pokemon = JSON.parse(newValue);
+    }
+  }
+
+  onClickButton(item: PokemonListItem) {
+    this.itemEmitter.emit(item);
   }
 
   render() {
     return (
       <Host>
         <div class="pokemon-cards">
-          {this.pokemons.map(item => {
+          {this.pokemon.results.map(item => {
             return (
               <div class="pokemon-card">
                 <div class="pokemon-card-body">
-                  <pokemon-detail data={item}></pokemon-detail>
+                  <span>{item.name}</span>
+                  <button
+                    onClick={() => this.onClickButton(item)}
+                    class="pokemon-card-button"
+                  >
+                    >
+                  </button>
                 </div>
               </div>
             );

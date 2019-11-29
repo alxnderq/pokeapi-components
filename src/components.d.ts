@@ -13,9 +13,11 @@ import {
 
 export namespace Components {
   interface PokemonDetail {
-    'data': PokemonListItem;
+    'data': string;
   }
-  interface PokemonList {}
+  interface PokemonList {
+    'data': string;
+  }
 }
 
 declare global {
@@ -40,9 +42,12 @@ declare global {
 
 declare namespace LocalJSX {
   interface PokemonDetail {
-    'data'?: PokemonListItem;
+    'data'?: string;
   }
-  interface PokemonList {}
+  interface PokemonList {
+    'data'?: string;
+    'onItemEmitter'?: (event: CustomEvent<PokemonListItem>) => void;
+  }
 
   interface IntrinsicElements {
     'pokemon-detail': PokemonDetail;

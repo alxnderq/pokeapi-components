@@ -7,18 +7,58 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
     />
     <title>Stencil Component Starter</title>
-
-    <link rel="stylesheet" href="/build/pokeapi-components.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/build/pokeapi-components.css" />
     <script type="module" src="/build/pokeapi-components.esm.js"></script>
     <script nomodule src="/build/pokeapi-components.js"></script>
+    <style>
+      .pokemon-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        height: calc(100vh - 100px);
+      }
+      .pokemon-list-container {
+        height: inherit;
+        overflow: auto;
+        width: 300px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <pokemon-list></pokemon-list>
+      <div class="pokemon-container">
+        <pokemon-list class="pokemon-list-container"></pokemon-list>
+        <pokemon-detail></pokemon-detail>
+      </div>
     </div>
   </body>
+  <script>
+    const pokemonList = document.querySelector("pokemon-list");
+    const pokemonDetail = document.querySelector("pokemon-detail");
+    pokemonList.data = "";
+    pokemonDetail.data = "";
+
+    const url = "https://pokeapi.co/api/v2/pokemon/";
+    fetch(url)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        pokemonList.setAttribute("data", JSON.stringify(data));
+      });
+
+    pokemonList.addEventListener("itemEmitter", event => {
+      fetch(event.detail.url)
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          pokemonDetail.setAttribute("data", JSON.stringify(data));
+        });
+    });
+  </script>
 </html>
